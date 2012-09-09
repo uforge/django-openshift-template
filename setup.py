@@ -3,11 +3,12 @@
 from setuptools import setup
 
 setup(
-    name='YourAppName',
+    name='openshift',
     version='1.0',
-    description='OpenShift App',
-    author='Your Name',
-    author_email='example@example.com',
-    url='http://www.python.org/sigs/distutils-sig/',
-    install_requires=['Django>=1.3'],
+    description='OpenShift Generic Django App',
+    author='Droidware',
+    author_email='info@droidware.it',
+    url='http://www.droidware.it',
+    dependency_links = ['http://hen.droidware.it/packages/'],
+    install_requires=['Django', 'PIL', 'droid-common-js', 'droid-django-dajaxice'],
 )
