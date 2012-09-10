@@ -89,11 +89,13 @@ STATIC_URL = '/static/'
 # Examples: "http://foo.com/static/admin/", "/static/admin/".
 ADMIN_MEDIA_PREFIX = '/static/admin/'
 
+DEV_STATIC_FOLDER = os.path.join(PROJECT_DIR, '../../data/', 'static')
 # Additional locations of static files
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    DEV_STATIC_FOLDER,
 )
 
 # List of finder classes that know how to find static files in
@@ -131,6 +133,14 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
 )
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.contrib.messages.context_processors.messages"
+    )
 
 ROOT_URLCONF = 'openshift.urls'
 
