@@ -1,0 +1,3 @@
+[submodule "django-compass-watches"]
+	path = django-compass-watches
+	url = https://github.com/vshjxyz/django-compass-watches.git
