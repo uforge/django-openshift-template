@@ -149,6 +149,10 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
+FIXTURE_DIRS = (
+    os.path.join(PROJECT_DIR, 'fixtures'),
+)
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
