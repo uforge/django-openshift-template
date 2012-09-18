@@ -10,5 +10,11 @@ setup(
     author_email='info@droidware.it',
     url='http://www.droidware.it',
     dependency_links = ['http://hen.droidware.it/packages/'],
-    install_requires=['Django', 'PIL', 'droid-common-js', 'droid-django-dajaxice'],
+    install_requires=['Django',
+                      'PIL',
+                      'droid-common-js',
+                      'droid-django-dajaxice',
+                      'south',
+                      'django-debug-toolbar',
+                      ],
 )
