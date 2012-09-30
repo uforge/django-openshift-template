@@ -13,7 +13,8 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    # ('Your Name', 'your_email@example.com'),
+    ('Maksim Sinik', 'max@droidware.it'),
+    ('Luca Del Bianco', 'luca@droidware.it')
 )
 MANAGERS = ADMINS
 
@@ -101,9 +102,6 @@ STATICFILES_FINDERS = (
     #'django.contrib.staticfiles.finders.DefaultStorageFinder',
 )
 
-COMPASS_DIRS = (
-    #os.path.join(DEV_STATIC_FOLDER, 'main'),
-)
 # Make a dictionary of default keys
 default_keys = { 'SECRET_KEY': 'vm4rl5*ymb@2&d_(gc$gb-^twq9w(u69hi--%$5xrh!xk(t%hw' }
 
@@ -132,12 +130,15 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 TEMPLATE_CONTEXT_PROCESSORS = (
-    "django.contrib.auth.context_processors.auth",
-    "django.core.context_processors.debug",
-    "django.core.context_processors.i18n",
-    "django.core.context_processors.media",
-    "django.core.context_processors.static",
-    "django.contrib.messages.context_processors.messages"
+    'django.contrib.auth.context_processors.auth',
+    'django.core.context_processors.debug',
+    'django.core.context_processors.i18n',
+    'django.core.context_processors.media',
+    'django.core.context_processors.static',
+    'django.contrib.messages.context_processors.messages',
+#   Uncomment this to minify the HTML
+#    'pipeline.middleware.MinifyHTMLMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     )
 
 ROOT_URLCONF = 'openshift.urls'
@@ -160,7 +161,10 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # Used to maintain the database and do migrations
     'south',
+    # Used to autocompile scss/eco/coffee files
+    'pipeline',
     'debug_toolbar',
     'droid.commonjs',
     # Uncomment the next line to enable the admin:
@@ -168,6 +172,98 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+PIPELINE_CSS = {
+    'style': {
+        'source_filenames': (
+          'main/scss/style.scss',
+        ),
+        'output_filename': 'main/css/style.css',
+    },
+    'screen': {
+        'source_filenames': (
+          'main/scss/screen.scss',
+        ),
+        'output_filename': 'main/css/screen.css',
+        'extra_context': {
+            'media': 'screen,projection',
+        },
+    },
+    'print': {
+        'source_filenames': (
+          'main/scss/print.scss',
+        ),
+        'output_filename': 'main/css/print.css',
+        'extra_context': {
+            'media': 'print',
+        },
+    },
+    'ie': {
+        'source_filenames': (
+          'main/scss/ie.scss',
+        ),
+        'output_filename': 'main/css/ie.css',
+        'extra_context': {
+            'media': 'screen,projection',
+        },
+    },
+}
+
+# We first include the assets in a single file called assets.js and then we add our 
+# sources to a file called application.js
+PIPELINE_JS = {
+    'assets': {
+        'source_filenames': (
+            'main/js/assets/libs/*.coffee',
+            'main/js/assets/libs/jquery.js',
+            'main/js/assets/libs/underscore.js',
+            'main/js/assets/libs/backbone.js',
+            'main/js/assets/libs/*.js',
+            'main/js/assets/plugins/*.coffee',
+            'main/js/assets/plugins/*.js',
+
+            'main/bootstrap/js/*.min.js',
+        ),
+        'output_filename': 'main/js/assets.js'
+    },
+# This is the real application, uncomment this lines if you use the default structure
+    'application': {
+        'source_filenames': (
+#            'main/js/app/namespace.coffee',
+#            'main/js/app/modules/*.coffee',
+#            'main/js/app/templates/*.eco',
+#            'main/js/app/index.coffee',
+        ),
+        'output_filename': 'main/js/application.js'
+    },
+}
+
+PIPELINE_COMPILERS = (
+    'pipeline_compass.compiler.CompassCompiler',
+    'pipeline_eco.compiler.EcoCompiler',
+    'pipeline.compilers.coffee.CoffeeScriptCompiler',
+)
+
+# Configurations for the django debugging toolbar
+INTERNAL_IPS = ('127.0.0.1',)
+
+DEBUG_TOOLBAR_PANELS = (
+    'debug_toolbar.panels.version.VersionDebugPanel',
+    'debug_toolbar.panels.timer.TimerDebugPanel',
+    'debug_toolbar.panels.settings_vars.SettingsVarsDebugPanel',
+    'debug_toolbar.panels.headers.HeaderDebugPanel',
+    #'debug_toolbar.panels.profiling.ProfilingDebugPanel',
+    'debug_toolbar.panels.request_vars.RequestVarsDebugPanel',
+    'debug_toolbar.panels.sql.SQLDebugPanel',
+    'debug_toolbar.panels.template.TemplateDebugPanel',
+    'debug_toolbar.panels.cache.CacheDebugPanel',
+    'debug_toolbar.panels.signals.SignalDebugPanel',
+    'debug_toolbar.panels.logger.LoggingPanel',
+)
+
+DEBUG_TOOLBAR_CONFIG = {
+    'INTERCEPT_REDIRECTS': False,
+}
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

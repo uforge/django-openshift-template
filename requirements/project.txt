@@ -3,8 +3,6 @@
 
 --requirement=base.txt
 
-South>=0.7.3
-PIL>=1.1.7
 droid-django-dajaxice
 droid-common-js
 

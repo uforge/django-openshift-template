@@ -3,10 +3,13 @@
 # project specific not listed here use project.txt. You can, of course, update
 # versions of distributions here if needed.
 
---extra-index-url=http://dist.pinaxproject.com/dev/
---extra-index-url=http://dist.pinaxproject.com/fresh-start/
 --find-links http://hen.droidware.it/packages/
 
 Django
-
+South
+PIL
+eco
+django-pipeline
+django-pipeline-compass
+django-pipeline-eco
 django-debug-toolbar

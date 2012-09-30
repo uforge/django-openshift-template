@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='openshift',
-    version='1.0',
+    version='0.2',
     description='OpenShift Generic Django App',
     author='Droidware',
     author_email='info@droidware.it',
@@ -12,6 +12,10 @@ setup(
     dependency_links = ['http://hen.droidware.it/packages/'],
     install_requires=['Django',
                       'PIL',
+                      'eco',
+                      'django-pipeline',
+                      'django-pipeline-compass',
+                      'django-pipeline-eco',
                       'droid-common-js',
                       'droid-django-dajaxice',
                       'south',
