@@ -175,33 +175,33 @@ INSTALLED_APPS = (
 
 PIPELINE_CSS = {
     'style': {
-        'source_filenames': (
+        'source_filenames': [
           'main/scss/style.scss',
-        ),
+        ],
         'output_filename': 'main/css/style.css',
     },
     'screen': {
-        'source_filenames': (
+        'source_filenames': [
           'main/scss/screen.scss',
-        ),
+        ],
         'output_filename': 'main/css/screen.css',
         'extra_context': {
             'media': 'screen,projection',
         },
     },
     'print': {
-        'source_filenames': (
+        'source_filenames': [
           'main/scss/print.scss',
-        ),
+        ],
         'output_filename': 'main/css/print.css',
         'extra_context': {
             'media': 'print',
         },
     },
     'ie': {
-        'source_filenames': (
+        'source_filenames': [
           'main/scss/ie.scss',
-        ),
+        ],
         'output_filename': 'main/css/ie.css',
         'extra_context': {
             'media': 'screen,projection',
@@ -213,7 +213,7 @@ PIPELINE_CSS = {
 # sources to a file called application.js
 PIPELINE_JS = {
     'assets': {
-        'source_filenames': (
+        'source_filenames': [
             'main/js/assets/libs/*.coffee',
             'main/js/assets/libs/jquery.js',
             'main/js/assets/libs/underscore.js',
@@ -223,17 +223,17 @@ PIPELINE_JS = {
             'main/js/assets/plugins/*.js',
 
             'main/bootstrap/js/*.min.js',
-        ),
+        ],
         'output_filename': 'main/js/assets.js'
     },
 # This is the real application, uncomment this lines if you use the default structure
     'application': {
-        'source_filenames': (
+        'source_filenames': [
 #            'main/js/app/namespace.coffee',
 #            'main/js/app/modules/*.coffee',
 #            'main/js/app/templates/*.eco',
 #            'main/js/app/index.coffee',
-        ),
+        ],
         'output_filename': 'main/js/application.js'
     },
 }
