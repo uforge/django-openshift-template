@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+<# -*- coding: utf-8 -*-
 # Django settings for openshift project.
 import imp, os
 
@@ -172,6 +172,8 @@ INSTALLED_APPS = (
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+ALLOWED_HOSTS = '*'
 
 PIPELINE_CSS = {
     'style': {
