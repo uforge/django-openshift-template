@@ -13,8 +13,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 ADMINS = (
-    ('Maksim Sinik', 'max@droidware.it'),
-    ('Luca Del Bianco', 'luca@droidware.it')
+    ('Luca Del Bianco', 'luca@uforge.it')
 )
 MANAGERS = ADMINS
 
@@ -211,7 +210,7 @@ PIPELINE_CSS = {
     },
 }
 
-# We first include the assets in a single file called assets.js and then we add our 
+# We first include the assets in a single file called assets.js and then we add our
 # sources to a file called application.js
 PIPELINE_JS = {
     'assets': {
